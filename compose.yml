@@ -200,7 +200,7 @@ services:
       - ./environment/mailpit.env
 
   postgres:
-    image: postgres:alpine
+    image: postgres:17-alpine
     depends_on:
       - coredns-internal
     restart: always
