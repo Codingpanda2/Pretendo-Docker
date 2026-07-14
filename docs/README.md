@@ -1,14 +1,33 @@
----
-slug: /
-sidebar_position: 1
-sidebar_label: Welcome
----
+# Pretendo Docker Documentation
 
-# Welcome to the Pretendo Docker Documentation
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-This documentation will help you get started with running your own self-hosted Pretendo Network server!
+[![Build and deploy documentation site](https://github.com/MatthewL246/pretendo-docker/actions/workflows/docs.yml/badge.svg)](https://github.com/MatthewL246/pretendo-docker/actions/workflows/docs.yml)
 
-This is just a fork look at the original project [the GitHub repo](https://github.com/MatthewL246/pretendo-docker) and learn
-more about the Pretendo Network on [their website](https://pretendo.network/).
+## [View the live site here](https://matthewl246.github.io/pretendo-docker)
 
-Get started by [continuing to the setup guide](./docs/setup/requirements.md).
+## Development
+
+### Install dependencies
+
+```shell
+npm install
+```
+
+### Start a local development server
+
+```shell
+npm start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without
+having to restart the server.
+
+### Build the site
+
+```shell
+npm run build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting
+service.
