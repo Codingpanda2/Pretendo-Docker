@@ -107,6 +107,9 @@ check_prerequisites
 print_stage "Setting up submodules and applying patches."
 ./scripts/setup-submodule-patches.sh
 
+find repos -name Dockerfile -exec sed -i \
+'s|github.com/go-delve/delve/cmd/dlv@latest|github.com/go-delve/delve/cmd/dlv@v1.24.2|g' {} \;
+
 print_stage "Setting up environment variables."
 setup_environment_variables
 
