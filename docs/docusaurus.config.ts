@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const github = {
-    username: "MatthewL246",
+    username: "Codingpanda2",
     repo: "pretendo-docker",
 };
 
