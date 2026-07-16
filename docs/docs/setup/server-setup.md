@@ -18,7 +18,7 @@ of Docker**.
 Clone this repo with Git, and make sure to recursively checkout submodules.
 
 ```shell
-git clone --recurse-submodules https://github.com/MatthewL246/pretendo-docker.git
+git clone --recurse-submodules https://github.com/Codingpanda2/Pretendo-Docker.git
 ```
 
 :::note
