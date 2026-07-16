@@ -38,8 +38,7 @@ instructions.**
 
 ## Future plans
 
-Check the [General Roadmap and Plans issue](https://github.com/MatthewL246/pretendo-docker/issues/50) for more
-information on my plans for this project.
+Check the [Contribution guide](https://github.com/MatthewL246/pretendo-docker/issues/50) for plans and how to help!
 
 ## Learn more
 

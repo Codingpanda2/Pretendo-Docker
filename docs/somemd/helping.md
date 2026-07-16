@@ -9,7 +9,8 @@ Cemu connection with Wii U NOT TESTED
 Cemu connection without Wii U NOT WORKING
 All console servers NOT TESTED
 
-# Major things to add
+# Major things to do/add
+Update the submodules
 More servers and services.
 Maybe a guide update from someone that has a Wii U and 3DS
 Maybe a Azahara guide, because it is new (I dont know what the changes are.)
