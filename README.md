@@ -6,7 +6,7 @@ self-hosting setup).
 WARNING!
 This is a revival of Pretendo Docker. I am doing my best to keep it up to date, but I am a beginner developer. I am trying to see if I can complete the roadmap and potentially add new modifications or new services that Pretendo has introduced.
 
-[![Test scripts and build Docker images](https://github.com/MatthewL246/pretendo-docker/actions/workflows/test.yml/badge.svg)](https://github.com/MatthewL246/pretendo-docker/actions/workflows/test.yml)
+[![Test scripts and build Docker images](https://github.com/Codingpanda2/Pretendo-Docker/actions/workflows/test.yml/badge.svg)](https://github.com/Codingpanda2/Pretendo-Docker/actions/workflows/test.yml)
 
 ## Supported consoles
 
