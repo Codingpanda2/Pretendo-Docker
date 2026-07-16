@@ -43,6 +43,7 @@ information on my plans for this project.
 
 ## Learn more
 
+- See the [Official Pretendo-docker](https://github.com/MatthewL246/pretendo-docker) that i forked from.
 - Read the [containers documentation](https://matthewl246.github.io/pretendo-docker/containers-list) to learn about the
   different components of this project.
 - Read Pretendo's [Nintendo Wiki](https://nintendo-wiki.pretendo.network/docs/) for technical information about
