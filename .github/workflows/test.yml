@@ -27,8 +27,8 @@ jobs:
           submodules: true
       - name: Apply Docker Compose CI overrides
         run: ln -s .github/compose.ci.yml compose.override.yml
-      - name: Make all shell scripts executable
-        run: find . -name "*.sh" -exec chmod +x {} +
+      - name: Make setup.sh work
+        run: chmod +x ./setup.sh
       - name: Run the setup script
         run: ./setup.sh --server-ip 127.0.0.1 --force --verbose
       - name: Test starting the servers
