@@ -37,6 +37,7 @@ add your user to the docker group: https://docs.docker.com/engine/install/linux-
             fi
         fi
     else
+    find . -name "*.sh" -exec chmod +x {} +
         print_success "All prerequisites are installed."
     fi
 }
