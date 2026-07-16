@@ -47,21 +47,11 @@ Remember that **all shell commands should be run inside WSL**, not Git Bash in W
 Open a terminal window inside the repository's directory. Run the initial setup script and follow its instructions. This
 will take some time to build the required Docker images, and it will use up to 8GB of bandwidth to download images.
 
-First we make sure we have permission on all of the .sh files
+First we make sure we have permission on the setup.sh files
 
 ```shell
 chmod +x ./setup.sh
-chmod +x ./scripts/setup-submodule-patches.sh
-chmod +x ./scripts/setup-environment.sh
-chmod +x ./scripts/get-boss-keys.sh
-chmod +x ./scripts/internal/firstrun-mongodb-container.sh
-chmod +x ./scripts/internal/firstrun-minio-container.sh
-chmod +x ./scripts/internal/firstrun-postgres-container.sh
-chmod +x ./scripts/internal/update-postgres-password.sh
-chmod +x ./scripts/internal/update-account-servers-database.sh
-chmod +x ./scripts/internal/update-miiverse-endpoints.sh
-chmod +x ./scripts/internal/migrations.sh
-chmod +x ./scripts/internal/framework.sh
+
 ```
 
 ```shell
