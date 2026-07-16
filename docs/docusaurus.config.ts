@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const github = {
     username: "Codingpanda2",
-    repo: "pretendo-docker",
+    repo: "Pretendo-Docker",
 };
 
 const config: Config = {
