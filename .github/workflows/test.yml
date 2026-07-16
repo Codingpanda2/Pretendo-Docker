@@ -1,5 +1,4 @@
 name: Test scripts and build Docker images
-
 on:
   push:
     paths-ignore:
@@ -22,17 +21,16 @@ jobs:
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: true
       - name: Apply Docker Compose CI overrides
         run: ln -s .github/compose.ci.yml compose.override.yml
-
+      - name: Make setup script executable
+        run: chmod +x ./setup.sh
       - name: Run the setup script
         run: ./setup.sh --server-ip 127.0.0.1 --force --verbose
-
       - name: Test starting the servers
         run: |
           docker compose up -d
