@@ -1,6 +1,6 @@
 {
     "extends": "@docusaurus/tsconfig",
     "compilerOptions": {
-        "baseUrl": "https://codingpanda2.github.io/Pretendo-Docker/"
+        "baseUrl": "/Pretendo-Docker/"
     }
 }
