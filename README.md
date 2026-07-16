@@ -39,6 +39,7 @@ instructions.**
 ## Future plans
 
 Check the [Contribution guide](https://github.com/MatthewL246/pretendo-docker/issues/50) for plans and how to help!
+I also keep you updated in the simple discord: https://discord.gg/QhPHmysgC
 
 ## Learn more
 
