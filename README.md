@@ -35,6 +35,7 @@ _\*The Pretendo Network servers only support the Wii U and 3DS consoles. Support
 
 **Please visit [the documentation website](https://matthewl246.github.io/pretendo-docker) for detailed setup and usage
 instructions.**
+Check out the [Discord](https://discord.gg/rDW2BUBxZZ) for more testing and updates!
 
 ## Future plans
 
