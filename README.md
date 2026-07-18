@@ -10,15 +10,16 @@ This is a revival of Pretendo Docker. I am doing my best to keep it up to date, 
 
 ## Supported consoles
 
-| Console        | Testing status   |
-| -------------- | ---------------- |
-| Wii U          | ✅ Working       |
-| Cemu emulator  | ✅ Working       |
-| 3DS            | ✅ Working       |
-| Citra emulator | ⏱️ Coming soon   |
-| Wii/DS/Switch  | ⛔ Unsupported\* |
+| Console        | Testing status       |
+| -------------- | -------------------- |
+| Wii U          | ⛔ Testing needed    |
+| Cemu emulator  | ⛔ Not Working       |
+| Cemu no Wii U  | ⛔ Not Working       |
+| 3DS            | ⛔ Testing needed    |
+| Citra emulator | ⏱️ Coming soon       |
+| Wii/DS/Switch  | ⛔ Unsupported\*     |
 
-_\*The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
+_\* For testing join the discord under getting started. The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
 
 ## Features
 
