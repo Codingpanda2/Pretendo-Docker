@@ -119,8 +119,10 @@ services:
   mongo-express:
     image: mongo-express:latest
     depends_on:
-      - coredns-internal
-      - mongodb
+      coredns-internal:
+        condition: service_started
+      mongodb:
+        condition: service_healthy
     restart: always
     ports:
       # Web interface
@@ -130,6 +132,7 @@ services:
     dns: 172.20.0.200
     env_file:
       - ./environment/mongo-express.env
+
 
   minio:
     image: minio/minio:latest
