@@ -119,10 +119,8 @@ services:
   mongo-express:
     image: mongo-express:latest
     depends_on:
-      coredns-internal:
-        condition: service_started
-      mongodb:
-        condition: service_healthy
+      - coredns-internal
+      - mongodb
     restart: always
     ports:
       # Web interface
