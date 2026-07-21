@@ -13,7 +13,7 @@ This is a revival of Pretendo Docker. I am doing my best to keep it up to date, 
 | Console        | Testing status       |
 | -------------- | -------------------- |
 | Wii U          | ⛔ Testing needed    |
-| Cemu emulator  | ⛔ Not Working       |
+| Cemu emulator  | ⛔ Testing needed    |
 | Cemu no Wii U  | ⛔ Not Working       |
 | 3DS            | ⛔ Testing needed    |
 | Citra emulator | ⏱️ Coming soon       |
