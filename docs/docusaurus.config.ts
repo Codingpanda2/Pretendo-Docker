@@ -20,10 +20,16 @@ const config: Config = {
     trailingSlash: true,
 
     onBrokenLinks: "throw",
-    onBrokenMarkdownLinks: "warn",
+    
+    markdown: {
+        hooks: {
+            onBrokenMarkdownLinks: "warn",
+        },
+    },
 
     future: {
-        experimental_faster: true,
+        faster: true,
+        v4: true,
     },
 
     i18n: {
