@@ -23,7 +23,7 @@ const config: Config = {
     onBrokenMarkdownLinks: "warn",
 
     future: {
-        experimental_faster: true,
+        faster: true,
     },
 
     i18n: {
