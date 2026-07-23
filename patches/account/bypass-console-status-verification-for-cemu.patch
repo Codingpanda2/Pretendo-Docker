@@ -2,7 +2,8 @@ diff --git i/src/middleware/console-status-verification.ts w/src/middleware/cons
 index a26d9b6..ad3783b 100644
 --- i/src/middleware/console-status-verification.ts
 +++ w/src/middleware/console-status-verification.ts
-@@ -5,6 +5,18 @@ import { Device } from '@/models/device';
+@@ -3,6 +3,18 @@ import { Device } from '@/models/device';
+import type express from 'express';
  import { getValueFromHeaders } from '@/util';
  
  async function consoleStatusVerificationMiddleware(request: express.Request, response: express.Response, next: express.NextFunction): Promise<void> {
