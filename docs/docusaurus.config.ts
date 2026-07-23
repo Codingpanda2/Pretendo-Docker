@@ -21,14 +21,12 @@ const config: Config = {
 
     onBrokenLinks: "throw",
     
-    // Hier is de waarschuwing opgelost door het te verplaatsen naar markdown.hooks
     markdown: {
         hooks: {
             onBrokenMarkdownLinks: "warn",
         },
     },
 
-    // Hier is de structuur netjes uitgelijnd
     future: {
         faster: true,
         v4: true,
