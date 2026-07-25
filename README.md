@@ -15,7 +15,7 @@ This is a revival of Pretendo Docker. I am doing my best to keep it up to date, 
 | Wii U          | ⛔ Testing needed    |
 | Cemu emulator  | ⛔ Testing needed    |
 | Cemu no Wii U  | ⛔ Not Working       |
-| 3DS            | ⛔ Testing needed    |
+| 3DS            | ✅ Working           |
 | Citra emulator | ⏱️ Coming soon       |
 | Wii/DS/Switch  | ⛔ Unsupported\*     |
 
