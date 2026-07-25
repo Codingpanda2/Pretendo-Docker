@@ -36,7 +36,7 @@ _\* For testing join the discord under getting started. The Pretendo Network ser
 
 **Please visit [the documentation website](https://matthewl246.github.io/pretendo-docker) for detailed setup and usage
 instructions.**
-Check out the [Discord](https://discord.gg/rDW2BUBxZZ) for more testing and updates!
+Add me on discord for requesting and if you want to help testing! mccodingpanda
 
 ## Future plans
 
