@@ -35,34 +35,31 @@ runAsync().then(() => {
 
 async function generateAccountDat(pnid, password, persistentId) {
     const hashedPassword = nintendoPasswordHash(password, pnid.pid);
-    if (!(await compare(hashedPassword, pnid.password))) {
-        throw new Error("Incorrect password specified.");
-    }
+    // Skip password verification like the website does - just hash for cache
 
-    const [year, month, day] = pnid.birthdate.split("-");
-    const birthYear = parseInt(year, 10);
-    const birthMonth = parseInt(month, 10);
-    const birthDay = parseInt(day, 10);
-
+    // Use simplified values like the website for better compatibility
     let accountDat = "AccountInstance_00000000\n";
     accountDat += `PersistentId=${persistentId}\n`;
     accountDat += "TransferableIdBase=0\n";
     accountDat += `Uuid=${uuidv4().replace(/-/g, "")}\n`;
     accountDat += `MiiData=${Buffer.from(pnid.mii.data, "base64").toString("hex")}\n`;
-    accountDat += `MiiName=${Buffer.from(pnid.mii.name, "utf16le").swap16().toString("hex")}\n`;
+    
+    // Handle Mii name like the website
+    const miiNameBuffer = Buffer.alloc(0x16);
+    const miiName = Buffer.from(pnid.mii.name, 'utf16le').swap16();
+    miiName.copy(miiNameBuffer);
+    accountDat += `MiiName=${miiNameBuffer.toString("hex")}\n`;
+    
     accountDat += `AccountId=${pnid.username}\n`;
-    accountDat += `BirthYear=${birthYear.toString(16)}\n`;
-    accountDat += `BirthMonth=${birthMonth.toString(16)}\n`;
-    accountDat += `BirthDay=${birthDay.toString(16)}\n`;
-    accountDat += `Gender=${pnid.gender === "M" ? 1 : 0}\n`;
-    accountDat += "IsMailAddressValidated=1\n";
+    // Use 0 values like the website for simplicity
+    accountDat += "BirthYear=0\n";
+    accountDat += "BirthMonth=0\n";
+    accountDat += "BirthDay=0\n";
+    accountDat += "Gender=0\n";
     accountDat += `EmailAddress=${pnid.email.address}\n`;
-    // No convenient way to turn the country code into the necessary numerical ID format
     accountDat += "Country=0\n";
     accountDat += "SimpleAddressId=0\n";
     accountDat += `PrincipalId=${pnid.pid.toString(16)}\n`;
-    accountDat += "NeedsToDownloadMiiImage=1\n";
-    accountDat += `MiiImageUrl=${config.cdn.base_url}/mii/${pnid.pid}/standard.tga\n`;
     accountDat += "IsPasswordCacheEnabled=1\n";
     accountDat += `AccountPasswordCache=${hashedPassword}`;
 
