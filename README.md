@@ -8,6 +8,9 @@ This is a revival of Pretendo Docker. I am doing my best to keep it up to date, 
 
 [![Test scripts and build Docker images](https://github.com/Codingpanda2/Pretendo-Docker/actions/workflows/test.yml/badge.svg)](https://github.com/Codingpanda2/Pretendo-Docker/actions/workflows/test.yml)
 
+## Official "test" server
+proxy: 57.131.134.20:8080
+
 ## Supported consoles
 
 | Console        | Testing status       |
