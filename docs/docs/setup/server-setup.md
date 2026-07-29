@@ -47,13 +47,13 @@ Remember that **all shell commands should be run inside WSL**, not Git Bash in W
 Open a terminal window inside the repository's directory. Run the initial setup script and follow its instructions. This
 will take some time to build the required Docker images, and it will use up to 8GB of bandwidth to download images.
 
-First we make sure we have permission on the setup.sh files
+First we make sure we have permission on the scripts.
 
 ```shell
 chmod +x ./setup.sh
-
+chmod +x scripts
 ```
-
+Now we can start the installation
 ```shell
 ./setup.sh
 ```
