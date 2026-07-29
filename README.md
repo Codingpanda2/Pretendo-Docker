@@ -17,7 +17,7 @@ proxy: 57.131.134.20:8080
 | -------------- | -------------------- |
 | Wii U          | ⛔ Testing needed    |
 | Cemu emulator  | ⛔ Testing needed    |
-| Cemu no Wii U  | ⛔ Not Working       |
+| Cemu no Wii U  | ✅ Working           |
 | 3DS            | ✅ Working           |
 | Citra emulator | ⏱️ Coming soon       |
 | Wii/DS/Switch  | ⛔ Unsupported\*     |
