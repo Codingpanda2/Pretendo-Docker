@@ -1,4 +1,3 @@
-// This should be evaled in the account container
 const fs = require("fs").promises;
 const { v4: uuidv4 } = require("uuid");
 const { compare } = require("bcrypt");
@@ -35,23 +34,18 @@ runAsync().then(() => {
 
 async function generateAccountDat(pnid, password, persistentId) {
     const hashedPassword = nintendoPasswordHash(password, pnid.pid);
-    // Skip password verification like the website does - just hash for cache
-
-    // Use simplified values like the website for better compatibility
     let accountDat = "AccountInstance_00000000\n";
     accountDat += `PersistentId=${persistentId}\n`;
     accountDat += "TransferableIdBase=0\n";
     accountDat += `Uuid=${uuidv4().replace(/-/g, "")}\n`;
     accountDat += `MiiData=${Buffer.from(pnid.mii.data, "base64").toString("hex")}\n`;
     
-    // Handle Mii name like the website
     const miiNameBuffer = Buffer.alloc(0x16);
     const miiName = Buffer.from(pnid.mii.name, 'utf16le').swap16();
     miiName.copy(miiNameBuffer);
     accountDat += `MiiName=${miiNameBuffer.toString("hex")}\n`;
     
     accountDat += `AccountId=${pnid.username}\n`;
-    // Use 0 values like the website for simplicity
     accountDat += "BirthYear=0\n";
     accountDat += "BirthMonth=0\n";
     accountDat += "BirthDay=0\n";
