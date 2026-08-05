@@ -14,7 +14,7 @@ const config: Config = {
 
     // GitHub Pages deployment configuration
     url: `https://${github.username.toLowerCase()}.github.io`,
-    baseUrl: `/${github.repo}/`,
+    baseUrl: `/`,
     organizationName: github.username,
     projectName: github.repo,
     trailingSlash: true,
