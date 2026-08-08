@@ -13,14 +13,14 @@ proxy: 57.131.134.20:8080
 
 ## Supported consoles
 
-| Console        | Testing status       |
-| -------------- | -------------------- |
-| Wii U          | ⛔ Testing needed    |
-| Cemu emulator  | ⛔ Testing needed    |
-| Cemu no Wii U  | ✅ Working           |
-| 3DS            | ✅ Working           |
-| Citra emulator | ⏱️ Coming soon       |
-| Wii/DS/Switch  | ⛔ Unsupported\*     |
+| Console        | Testing status     |
+| -------------- | -----------------  |
+| Wii U          | ✅ Working        |
+| Cemu emulator  | ✅Working         |
+| Cemu no Wii U  | ✅ Working        |
+| 3DS            | ✅ Working        |
+| Citra emulator | ⏱️ Coming soon    |
+| Wii/DS/Switch  | ⛔ Unsupported\*  |
 
 _\* For testing join the discord under getting started. The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
 
