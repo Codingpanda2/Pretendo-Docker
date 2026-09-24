@@ -23,7 +23,7 @@ I am working on a testers server since my IP was scanned and spammed for being p
 | Citra emulator | ⏱️ Coming soon    |
 | Wii/DS/Switch  | ⛔ Unsupported\*  |
 
-_\* For testing join the discord under getting started. The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
+_\* The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
 
 ## Features
 
