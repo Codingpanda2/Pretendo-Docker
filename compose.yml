@@ -133,7 +133,7 @@ services:
 
 
   minio:
-    image: minio/minio:latest
+    image: dhi.io/minio:latest
     depends_on:
       - coredns-internal
       - nginx
