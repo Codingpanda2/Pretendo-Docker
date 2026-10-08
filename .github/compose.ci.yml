@@ -21,6 +21,8 @@ services:
   minio:
     restart: no
     ports: !reset []
+  minio-init:
+    restart: no
   redis:
     restart: no
     ports: !reset []

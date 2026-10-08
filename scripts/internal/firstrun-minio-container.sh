@@ -11,8 +11,6 @@ minio_init_script=$(cat "$git_base_dir/scripts/run-in-container/minio-init.sh")
 
 compose_no_progress up -d minio
 run_command_until_success "Waiting for MinIO to be ready..." 5 \
-    docker compose exec minio mc alias set minio http://minio.pretendo.cc "$MINIO_ROOT_USER" "$MINIO_ROOT_PASSWORD"
-
-run_verbose docker compose exec minio sh -c "$minio_init_script"
+    docker compose exec -e MINIO_ENDPOINT=http://127.0.0.1:9000 minio sh -c "$minio_init_script" sh --once
 
 print_success "MinIO container is set up."

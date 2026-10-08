@@ -1,0 +1,17 @@
+diff --git i/src/services/api/routes/v1/register.ts w/src/services/api/routes/v1/register.ts
+index 2b1928b..0c51ddd 100644
+--- i/src/services/api/routes/v1/register.ts
++++ w/src/services/api/routes/v1/register.ts
+@@ -350,9 +350,9 @@ router.post('/', async (request: express.Request, response: express.Response): Promise<void> => {
+ 		await session.abortTransaction();
+ 
+-		response.status(400).json({
++		response.status(500).json({
+ 			app: 'api',
+-			status: 400,
+-			error: 'Password must have combination of letters, numbers, and/or punctuation characters'
++			status: 500,
++			error: 'An internal error occurred while creating your account'
+ 		});
+ 
+ 		return;
