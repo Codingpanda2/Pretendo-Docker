@@ -16,12 +16,14 @@ services:
     command: mitmweb --web-host 0.0.0.0
     tty: true
 
-  # Uncomment alles hieronder om SSSL-verbindingen met DNS-redirection in te schakelen
+  # Uncomment everything below to enable SSSL connections with DNS redirection
   #
   # nginx-sssl:
+  #   # This forwards all requests to the primary Nginx
   #   build: ./repos/SSSL-DNS/nginx
   #   restart: always
   #   ports:
+  #     # HTTPS
   #     - 443:443
   #   volumes:
   #     - type: bind
@@ -38,9 +40,11 @@ services:
   #       read_only: true
   #
   # coredns-public:
+  #   # This responds to DNS queries from client consoles, redirecting Nintendo requests to the local server
   #   image: coredns/coredns:latest
   #   restart: always
   #   ports:
+  #     # DNS
   #     - 53:53/udp
   #   volumes:
   #     - type: bind
@@ -54,6 +58,7 @@ services:
   #     - ./.env
 
   coredns-internal:
+    # This responds to DNS queries from the internal network of containers, redirecting Pretendo to the Nginx container
     image: coredns/coredns:latest
     restart: always
     volumes:
@@ -90,12 +95,13 @@ services:
     dns: 172.20.0.200
 
   mongodb:
+    # TODO: Set up authentication
     image: mongo:latest
     depends_on:
       - coredns-internal
     restart: always
     ports:
-      # Mongosh / MongoDB Compass
+      # For connecting with mongosh or MongoDB Compass
       - 127.0.0.1:27017:27017
     volumes:
       - type: bind
@@ -125,6 +131,7 @@ services:
     env_file:
       - ./environment/mongo-express.env
 
+
   minio:
     image: docker.io/pgsty/minio:latest
     depends_on:
@@ -144,8 +151,7 @@ services:
     env_file:
       - ./environment/minio.env
       - ./environment/minio.local.env
-    # Toegevoegd: '/data' parameter zodat de server weet waar hij data moet opslaan
-    command: server /data --console-address ":8083"
+    command: server --console-address ":8083"
 
   redis:
     image: redis:alpine
@@ -200,7 +206,7 @@ services:
       - coredns-internal
     restart: always
     ports:
-      # pgAdmin connectie
+      # For connecting with pgAdmin
       - 127.0.0.1:5432:5432
     volumes:
       - type: volume
@@ -340,7 +346,145 @@ services:
       - ./environment/juxtaposition-ui.env
       - ./environment/juxtaposition-ui.local.env
 
-# Zorg ervoor dat de benoemde volumes onderaan je bestand intact blijven:
+  boss:
+    build: ./repos/BOSS
+    depends_on:
+      - account
+      - mongodb
+    restart: always
+    ports:
+      # Node.js debugger
+      - 127.0.0.1:9233:9233
+    volumes:
+      - type: bind
+        source: ./config/mongoose-connect-options.json
+        target: /home/node/app/mongoose-connect-options.json
+        read_only: true
+    networks:
+      internal:
+    dns: 172.20.0.200
+    command: ["node", "--inspect=0.0.0.0:9233", "."]
+    env_file:
+      - ./environment/boss.env
+      - ./environment/boss.local.env
+
+  wiiu-chat-authentication:
+    build: ./repos/wiiu-chat-authentication
+    depends_on:
+      - account
+      - mongodb
+    restart: always
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2346:2345
+      # Authentication server
+      - 6002:6002/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/wiiu-chat.env
+      - ./environment/wiiu-chat.local.env
+
+  wiiu-chat-secure:
+    build: ./repos/wiiu-chat-secure
+    depends_on:
+      - account
+      - mongodb
+      - wiiu-chat-authentication
+    restart: always
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2347:2345
+      # Secure server
+      - 6003:6003/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/wiiu-chat.env
+      - ./environment/wiiu-chat.local.env
+
+  super-mario-maker:
+    build: ./repos/super-mario-maker
+    depends_on:
+      - account
+      - minio
+      - postgres
+    restart: always
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2348:2345
+      # Authentication server
+      - 6004:6004/udp
+      # Secure server
+      - 6005:6005/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/super-mario-maker.env
+      - ./environment/super-mario-maker.local.env
+
+  splatoon:
+    build: ./repos/splatoon
+    depends_on:
+      - account
+      - mongodb
+    restart: unless-stopped
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2349:2345
+      # Authentication server
+      - 6006:6006/udp
+      # Secure server
+      - 6007:6007/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/splatoon.env
+      - ./environment/splatoon.local.env
+
+  minecraft-wiiu:
+    build: ./repos/minecraft-wiiu
+    depends_on:
+      - account
+    restart: unless-stopped
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2350:2345
+      # Authentication server
+      - 6008:6008/udp
+      # Secure server
+      - 6009:6009/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/minecraft-wiiu.env
+      - ./environment/minecraft-wiiu.local.env
+
+  pikmin-3:
+    build: ./repos/pikmin-3
+    depends_on:
+      - account
+      - postgres
+    restart: unless-stopped
+    ports:
+      # Go delve debugger
+      - 127.0.0.1:2351:2349
+      # Authentication server
+      - 6010:6010/udp
+      # Secure server
+      - 6011:6011/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/pikmin-3.env
+      - ./environment/pikmin-3.local.env
+
 volumes:
   mitmproxy-pretendo-data:
   mongodb-database:
@@ -351,7 +495,11 @@ volumes:
 
 networks:
   default:
+  # We need to use a custom network so that we can set a static IP address for
+  # CoreDNS and use it as a DNS server for the other containers.
   internal:
+    driver: bridge
     ipam:
+      driver: default
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.20.0.0/24
