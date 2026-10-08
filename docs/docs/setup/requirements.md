@@ -43,3 +43,20 @@ encounter any issues, please report them!_
   client consoles. This is most likely a package in your distro's package manager repo.
 
 Everything else runs inside Docker containers, so it does not need to be installed.
+
+## Network ports
+
+The server host must allow these inbound ports through its firewall:
+
+| Protocol | Port(s) | Purpose |
+| -------- | ------- | ------- |
+| TCP      | 80      | HTTP requests to the website and server APIs |
+| TCP      | 8080    | The proxy used by Wii U and 3DS clients |
+| UDP      | 6000-6011 | Game authentication and secure-server traffic |
+
+The setup script attempts to add these rules to UFW. If UFW is unavailable or the rules cannot be added, it prints the
+commands to run manually. You may also need to configure port forwarding on your router or firewall; UFW rules alone
+do not make a server reachable from outside its local network.
+
+Optional services have additional ports: public DNS uses UDP 53 when `coredns-public` is enabled, and SSSL uses TCP
+443 when `nginx-sssl` is enabled. Open those ports manually only when enabling those services.

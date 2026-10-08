@@ -67,6 +67,38 @@ setup_containers() {
     compose_no_progress down
 }
 
+configure_firewall() {
+    local firewall_setup_failed=false
+    local rule
+    local firewall_rules=("80/tcp" "8080/tcp" "6000:6011/udp")
+
+    if ! command -v ufw >/dev/null 2>&1; then
+        print_warning "UFW is not installed. Firewall rules were not configured automatically."
+        firewall_setup_failed=true
+    elif ! sudo -v; then
+        print_warning "Could not obtain administrator privileges to configure UFW."
+        firewall_setup_failed=true
+    else
+        for rule in "${firewall_rules[@]}"; do
+            if sudo ufw allow "$rule"; then
+                print_success "Allowed $rule through UFW."
+            else
+                print_warning "Could not allow $rule through UFW."
+                firewall_setup_failed=true
+            fi
+        done
+    fi
+
+    if [[ "$firewall_setup_failed" = true ]]; then
+        print_warning "Run the following commands manually to allow public server traffic:"
+    else
+        print_info "If your console still cannot connect after setup, run these commands manually:"
+    fi
+    printf '  sudo ufw allow 80/tcp\n'
+    printf '  sudo ufw allow 8080/tcp\n'
+    printf '  sudo ufw allow 6000:6011/udp\n'
+}
+
 export PRETENDO_SETUP_IN_PROGRESS=true
 
 # Temporary function because the framework script isn't sourced yet and we don't know if tput is available
@@ -122,6 +154,9 @@ docker compose build
 
 print_stage "Setting up containers with first-run scripts."
 setup_containers
+
+print_stage "Configuring firewall."
+configure_firewall
 
 print_title "Pretendo Network server setup script finished"
 print_success "Setup completed! You can now start your Pretendo Network server with \"docker compose up -d --build\"."

@@ -13,7 +13,12 @@ services:
       - type: volume
         source: mitmproxy-pretendo-data
         target: /home/mitmproxy/.mitmproxy
-    command: mitmweb --web-host 0.0.0.0
+    command:
+      - mitmweb
+      - --web-host
+      - 0.0.0.0
+      - --ignore-hosts
+      - '^(?!.*(nintendo\.net|nintendowifi\.net|pretendo\.cc|pretendo\.network|pretendo-cdn\.b-cdn\.net)).*$'
     tty: true
 
   # Uncomment everything below to enable SSSL connections with DNS redirection

@@ -4,6 +4,7 @@
 
 # Important secrets
 /secrets.txt
+/online-files/
 
 # Mitmproxy CA certificate
 /console-files/mitmproxy-ca-cert.pem
