@@ -15,10 +15,11 @@ This is a revival of Pretendo Docker. I am doing my best to keep it up to date, 
 | Cemu emulator  | ✅Working         |
 | Cemu no Wii U  | ✅ Working        |
 | 3DS            | ✅ Working        |
-| Citra emulator | ⏱️ Coming soon    |
+| Azahar emulator| ⏱️ Coming soon\** |
 | Wii/DS/Switch  | ⛔ Unsupported\*  |
 
 _\* The Pretendo Network servers only support the Wii U and 3DS consoles. Support for other consoles is not planned._
+_\** The Azahar Emulator is the 3ds emulator Pretendo Network currently is using. Support is planned but i don't have a 3ds._
 
 ## Features
 
